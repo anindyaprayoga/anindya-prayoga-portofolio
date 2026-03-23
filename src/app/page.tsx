@@ -1014,10 +1014,11 @@ function ProjectCard({
   useEffect(() => {
     const c = canvasRef.current;
     if (!c) return;
+    const canvas = c;
     const parent = c.parentElement!;
     function sz() {
-      c.width = parent.offsetWidth;
-      c.height = parent.offsetHeight;
+      canvas.width = parent.offsetWidth;
+      canvas.height = parent.offsetHeight;
     }
     sz();
     window.addEventListener("resize", sz);
@@ -1040,8 +1041,8 @@ function ProjectCard({
     const [r, g, b] = pal[type];
 
     function draw() {
-      const W = c.width,
-        H = c.height;
+      const W = canvas.width,
+        H = canvas.height;
       ctx.clearRect(0, 0, W, H);
 
       if (type === "mri") {
@@ -1194,9 +1195,9 @@ function ProjectCard({
       }
 
       // scanlines
-      for (let y = 0; y < c.height; y += 4) {
+      for (let y = 0; y < canvas.height; y += 4) {
         ctx.fillStyle = "rgba(0,0,0,.16)";
-        ctx.fillRect(0, y, c.width, 1);
+        ctx.fillRect(0, y, canvas.width, 1);
       }
 
       t += 0.04;
