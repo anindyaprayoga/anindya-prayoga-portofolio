@@ -1015,14 +1015,14 @@ function ProjectCard({
     const c = canvasRef.current;
     if (!c) return;
     const canvas = c;
-    const parent = c.parentElement!;
+    const parent = canvas.parentElement!;
     function sz() {
       canvas.width = parent.offsetWidth;
       canvas.height = parent.offsetHeight;
     }
     sz();
     window.addEventListener("resize", sz);
-    const ctx = c.getContext("2d")!;
+    const ctx = canvas.getContext("2d")!;
     let t = Math.random() * 100,
       animId = 0;
 
